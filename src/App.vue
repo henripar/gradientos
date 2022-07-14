@@ -1,18 +1,39 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/editor">Editor</router-link>
-  </nav>
-  <router-view />
+  <router-view
+    :darkmode="darkmode"
+    :gradients="gradients"
+    @dark-mode-switch="changeDarkMode"
+  />
 </template>
 
+<script>
+import Gradients from './data/gradients.json';
+
+export default {
+  data() {
+    return {
+      gradients: Gradients,
+      darkmode: true,
+    };
+  },
+  methods: {
+    changeDarkMode() {
+      this.darkmode = !this.darkmode;
+    },
+  },
+};
+</script>
+
 <style>
+* {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 nav {
