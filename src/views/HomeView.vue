@@ -7,14 +7,15 @@
       color="black"
     />
     <div class="gradientListContainer">
-      <div
+      <router-link
         :key="gradient.name"
         :style="getBackgroundStyle(gradient.colors)"
         class="gradient-display"
         v-for="gradient in gradients"
+        :to="{ name: 'editor', params: { colors: gradient.colors } }"
       >
         <span class="gradientName">{{ gradient.name }}</span>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -29,6 +30,11 @@ import Gradients from '../data/gradients.json';
 export default {
   name: 'HomeView',
   props: ['darkmode', 'gradients'],
+  data() {
+    return {
+      activeColors: [],
+    };
+  },
   components: {
     DarkModeButton,
     Header,

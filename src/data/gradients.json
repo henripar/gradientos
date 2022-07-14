@@ -10,5 +10,17 @@
   {
     "name": "Lipstick",
     "colors": ["#c84e89", "#F15F79"]
+  },
+  {
+    "name": "Desert Sun",
+    "colors": ["#f9d07d", "#cb4558"]
+  },
+  {
+    "name": "Pure Lust",
+    "colors": ["#F97D7F", "#9E081E"]
+  },
+  {
+    "name": "Pink Panther",
+    "colors": ["#FFC0D6", "#FF559E", "#FF559E"]
   }
 ]
