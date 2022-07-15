@@ -2,7 +2,7 @@
   <header>
     <img class="logo" alt="Vue logo" src="../assets/logo.png" />
     <h1 class="header1">{{ text }}</h1>
-    <h2 :class="[darkmode ? 'dark' : 'light']">
+    <h2 :class="darkmode ? 'dark' : 'light'">
       See gradients applied on common UI elements on a live demo website.
     </h2>
     <a
@@ -84,6 +84,14 @@ h2 {
 
 .phBadge {
   margin: 2rem;
+}
+
+.dark {
+  color: white;
+}
+
+.light {
+  color: black;
 }
 
 @media screen and (max-width: 520px) {

@@ -29,6 +29,7 @@ export default {
   margin: 0;
   font-family: 'Roboto', sans-serif;
 }
+
 #app {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -38,5 +39,9 @@ export default {
 
 a {
   text-decoration: none;
+}
+
+canvas {
+  display: none;
 }
 </style>

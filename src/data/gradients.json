@@ -16,11 +16,35 @@
     "colors": ["#f9d07d", "#cb4558"]
   },
   {
-    "name": "Pure Lust",
+    "name": "Rose Garden",
     "colors": ["#F97D7F", "#9E081E"]
   },
   {
     "name": "Pink Panther",
     "colors": ["#FFC0D6", "#FF559E", "#FF559E"]
+  },
+  {
+    "name": "Orange Paradise",
+    "colors": ["#FBBA00", "#FF8714"]
+  },
+  {
+    "name": "Sunset in Bali",
+    "colors": ["#ffcc2f", "#ef5734"]
+  },
+  {
+    "name": "Peachy Dreams",
+    "colors": ["#ffa585", "#ffeda0"]
+  },
+  {
+    "name": "Tropical Juice",
+    "colors": ["#FFFAA7", "#FBAC08"]
+  },
+  {
+    "name": "Totally Bananas",
+    "colors": ["#FFFBAB", "#F9DE70"]
+  },
+  {
+    "name": "The Mighty Jungle",
+    "colors": ["#fcffab", "#acffa3"]
   }
 ]

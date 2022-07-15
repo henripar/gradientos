@@ -1,9 +1,13 @@
 <template>
   <div :class="['mainContainer', darkmode ? 'darkBG' : 'lightBG']">
-    <DarkModeButton :darkmode="darkmode" @dark-mode-switch="changeDarkMode" />
+    <DarkModeButton
+      class="darkModeBtnContainer"
+      :darkmode="darkmode"
+      @dark-mode-switch="changeDarkMode"
+    />
     <Header
       :darkmode="darkmode"
-      text="Hand-picked CSS gradients on live UI elements."
+      text="Hand-picked CSS gradients on UI elements."
       color="black"
     />
     <div class="gradientListContainer">
@@ -12,7 +16,10 @@
         :style="getBackgroundStyle(gradient.colors)"
         class="gradient-display"
         v-for="gradient in gradients"
-        :to="{ name: 'editor', params: { colors: gradient.colors } }"
+        :to="{
+          name: 'editor',
+          params: { gradientColors: gradient.colors, colorName: gradient.name },
+        }"
       >
         <span class="gradientName">{{ gradient.name }}</span>
       </router-link>
@@ -53,7 +60,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .mainContainer {
   background: black;
   padding-bottom: 3rem;
@@ -101,11 +108,18 @@ export default {
 }
 
 .dark {
-  color: white;
+  color: white !important;
 }
 
 .light {
   color: black;
+}
+
+.darkModeBtnContainer {
+  position: absolute;
+  top: 50px;
+  right: 10%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1110px) {

@@ -1,5 +1,5 @@
 <template>
-  <div :class="['darkModeBtnContainer', darkmode ? 'dark' : 'light']">
+  <div :class="[darkmode ? 'dark' : 'light']">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -56,11 +56,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.darkModeBtnContainer {
-  position: absolute;
-  top: 50px;
-  right: 10%;
-  cursor: pointer;
-}
-</style>
+<style scoped></style>
