@@ -74,6 +74,8 @@ export default {
         this.gradients[Math.floor(Math.random() * this.gradients.length)];
       this.colors = randomElement.colors;
       this.gradientName = randomElement.name;
+      this.$emit('color1Updated', this.colors[0], 0);
+      this.$emit('color1Updated', this.colors[1], 1);
     },
   },
   created() {
@@ -88,6 +90,6 @@ export default {
 
 <style scoped>
 .section-1 {
-  height: 40vh;
+  height: 45vh;
 }
 </style>

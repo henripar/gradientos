@@ -40,7 +40,7 @@ export default {
 <style>
 .colorPickerContainer {
   position: absolute;
-  top: 60px;
+  top: 80px;
 }
 .vc-chrome-alpha-wrap {
   display: none !important;

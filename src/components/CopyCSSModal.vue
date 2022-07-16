@@ -194,7 +194,25 @@ p {
   margin: 1rem 0;
 }
 
-/* .codeContainer {
-  margin: 2rem 0;
-} */
+@media screen and (max-width: 680px) {
+  .copyCSSModalContainer {
+    left: 60%;
+    width: 67%;
+    top: 225px;
+  }
+  .cssValue {
+    overflow-x: auto;
+  }
+  pre {
+    max-width: 87%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .copyCSSModalContainer {
+    left: 50%;
+    width: 90%;
+    top: 250px;
+  }
+}
 </style>

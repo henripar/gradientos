@@ -30,13 +30,13 @@
       :style="{ background: colors[0] }"
       class="colorBox"
     >
-      <ColorPicker
-        @color1Updated="updateColor"
-        v-if="isColor1PickerOpen"
-        :position="0"
-        :color="colors[0]"
-      />
     </span>
+    <ColorPicker
+      @color1Updated="updateColor"
+      v-if="isColor1PickerOpen"
+      :position="0"
+      :color="colors[0]"
+    />
     <span
       @click="copyToClipboard(colors[0], 0)"
       :class="['colorText', darkmode ? 'dark' : 'light']"
@@ -64,13 +64,13 @@
       class="colorBox"
       @click="openColorPicker(2)"
     >
-      <ColorPicker
-        @color-1-updated="updateColor"
-        v-if="isColor2PickerOpen"
-        :position="1"
-        :color="colors[1]"
-      />
     </span>
+    <ColorPicker
+      @color-1-updated="updateColor"
+      v-if="isColor2PickerOpen"
+      :position="1"
+      :color="colors[1]"
+    />
     <span
       @click="copyToClipboard(colors[1], 1)"
       :class="['colorText', darkmode ? 'dark' : 'light']"
@@ -81,7 +81,7 @@
       gradientName
     }}</span>
     <button
-      @click="this.isCopyCSSModalOpen = !isCopyCSSModalOpen"
+      @click="openCSSCopyModal()"
       :class="[
         'settingButton',
         darkmode ? 'dark' : 'light',
@@ -158,10 +158,22 @@ export default {
     };
   },
   methods: {
-    openColorPicker(position, e) {
-      if (position === 1) this.isColor1PickerOpen = !this.isColor1PickerOpen;
-      console.log(this.colors[0]);
-      if (position === 2) this.isColor2PickerOpen = !this.isColor2PickerOpen;
+    openCSSCopyModal() {
+      this.isCopyCSSModalOpen = !this.isCopyCSSModalOpen;
+      this.isColor1PickerOpen = false;
+      this.isColor2PickerOpen = false;
+    },
+    openColorPicker(position) {
+      if (position === 1) {
+        this.isColor1PickerOpen = !this.isColor1PickerOpen;
+        this.isColor2PickerOpen = false;
+        this.isCopyCSSModalOpen = false;
+      }
+      if (position === 2) {
+        this.isColor2PickerOpen = !this.isColor2PickerOpen;
+        this.isColor1PickerOpen = false;
+        this.isCopyCSSModalOpen = false;
+      }
     },
     updateColor(color, position) {
       this.$emit('color1Updated', color, position);
@@ -290,5 +302,36 @@ export default {
 .settingButton.dark:hover {
   background: #ececec16;
   cursor: pointer;
+}
+
+@media screen and (max-width: 680px) {
+  .container {
+    flex-direction: column;
+    top: 23%;
+    left: 10%;
+    height: 300px;
+    justify-content: space-around;
+  }
+  .colorText {
+    display: none;
+  }
+  .gradientName {
+    display: none;
+  }
+  .colorBox {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .container {
+    flex-direction: row;
+    top: 7%;
+    left: 50%;
+    justify-content: space-around;
+    align-items: center;
+    height: auto;
+    width: 90%;
+  }
 }
 </style>

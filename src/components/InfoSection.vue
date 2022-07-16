@@ -117,4 +117,16 @@ export default {
 p {
   font-size: 2rem;
 }
+
+@media screen and (max-width: 640px) {
+  .infoSectionContent {
+    width: 75%;
+  }
+  .header2 {
+    font-size: 2.5rem;
+  }
+  p {
+    font-size: 1.5rem;
+  }
+}
 </style>
