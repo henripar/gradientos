@@ -63,7 +63,7 @@ export default {
 <style scoped>
 .mainContainer {
   background: black;
-  padding-bottom: 3rem;
+  padding-bottom: 1rem;
 }
 
 .gradient-display {
@@ -80,7 +80,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
-  margin: 10%;
+  margin: 2rem 10%;
   margin-top: 2rem;
 }
 

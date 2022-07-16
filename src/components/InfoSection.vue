@@ -2,7 +2,7 @@
   <div :style="generateBackground()" class="infoSectionContainer">
     <div class="infoSectionContent">
       <h2 :style="generateTextGradient(colors)" class="header2">
-        Welcome to gradientos!
+        Welcome to Gradientos!
       </h2>
       <p :style="generateTextColor()">
         With Gradientos you can quickly test how different gradients would look

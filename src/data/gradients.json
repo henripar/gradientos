@@ -1,14 +1,15 @@
 [
   {
-    "name": "Mystic Mist",
-    "colors": ["#b993d6", "#8ca6db"]
+    "name": "Gradientos",
+    "colors": ["#e4ad7a", "#d770b2"]
   },
+
   {
     "name": "Candy Town",
     "colors": ["#d8848b", "#cb96da"]
   },
   {
-    "name": "Lipstick Madness",
+    "name": "Lipstick Overdose",
     "colors": ["#c84e89", "#F15F79"]
   },
   {
@@ -70,5 +71,53 @@
   {
     "name": "Emerald Water",
     "colors": ["#62dab4", "#10bed4"]
+  },
+  {
+    "name": "Nusa Penida",
+    "colors": ["#a0dec3", "#3eadcf"]
+  },
+  {
+    "name": "The Blue Bird",
+    "colors": ["#7debf2", "#60a4ff"]
+  },
+  {
+    "name": "Aurora Borealis",
+    "colors": ["#5ee7df", "#b490ca"]
+  },
+  {
+    "name": "Scent of Lilacs",
+    "colors": ["#a487e6", "#f2bfe3"]
+  },
+  {
+    "name": "Violet's Secret",
+    "colors": ["#b587e6", "#d169d1"]
+  },
+  {
+    "name": "Mystic Mist",
+    "colors": ["#b993d6", "#8ca6db"]
+  },
+  {
+    "name": "Hot Summer Eve",
+    "colors": ["#e6589d", "#a65fb5"]
+  },
+  {
+    "name": "Nostalgia",
+    "colors": ["#8e1d9e", "#b764c5"]
+  },
+  {
+    "name": "The Nightclub",
+    "colors": ["#9820a8", "#d16b98"]
+  },
+  {
+    "name": "Sweet as Pie",
+    "colors": ["#cb6594", "#f81d55"]
+  },
+  {
+    "name": "Forbidden Fun",
+    "colors": ["#fc3977", "#ffadbd"]
+  },
+  {
+    "name": "Strawberry Smoothie",
+    "colors": ["#bc2a74", "#ff7c9c"]
   }
 ]
