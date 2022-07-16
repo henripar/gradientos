@@ -10,6 +10,7 @@
  <img alt="Netlify status" src="https://api.netlify.com/api/v1/badges/d1b8c138-ec23-49af-aa33-dde2dde48e4c/deploy-status" >
   <img alt="GitHub language" src="https://img.shields.io/github/languages/top/henripar/gradientos">
  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/henripar/gradientos">
+  <img alt="GitHub" src="https://img.shields.io/github/license/henripar/gradientos">
 </p>
 
 
