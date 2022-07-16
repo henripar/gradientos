@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
+  <div :class="['container', darkmode ? 'darkContainer' : 'lightContainer']">
     <router-link
       :style="{
         display: 'flex',
         'align-items': 'center',
         'justify-content': 'center',
         'text-decoration': 'none',
-        color: '#000',
+        color: darkmode ? '#fff' : '#000',
       }"
       to="/"
     >
@@ -17,7 +17,7 @@
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        stroke-width="2"
+        stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
       >
@@ -25,10 +25,25 @@
         <polyline points="9 22 9 12 15 12 15 22"></polyline>
       </svg>
     </router-link>
-    <span :style="{ background: colors[0] }" class="colorBox"></span>
-    <span @click="copyToClipboard(colors[0], 0)" class="colorText">
+    <span
+      @click="openColorPicker(1)"
+      :style="{ background: colors[0] }"
+      class="colorBox"
+    >
+      <ColorPicker
+        @color-1-updated="updateColor"
+        v-if="isColor1PickerOpen"
+        :position="0"
+        :color="colors[0]"
+      />
+    </span>
+    <span
+      @click="copyToClipboard(colors[0], 0)"
+      :class="['colorText', darkmode ? 'dark' : 'light']"
+    >
       {{ isColor1Copied ? 'Copied!' : colors[0] }}
     </span>
+
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -39,16 +54,33 @@
       stroke-width="1"
       stroke-linecap="round"
       stroke-linejoin="round"
+      :class="darkmode ? 'dark' : 'light'"
     >
       <line x1="5" y1="12" x2="19" y2="12"></line>
       <polyline points="12 5 19 12 12 19"></polyline>
     </svg>
-    <span :style="{ background: colors[1] }" class="colorBox"></span>
-    <span @click="copyToClipboard(colors[1], 1)" class="colorText">
+    <span
+      :style="{ background: colors[1] }"
+      class="colorBox"
+      @click="openColorPicker(2)"
+    >
+      <ColorPicker
+        @color-1-updated="updateColor"
+        v-if="isColor2PickerOpen"
+        :position="1"
+        :color="colors[1]"
+      />
+    </span>
+    <span
+      @click="copyToClipboard(colors[1], 1)"
+      :class="['colorText', darkmode ? 'dark' : 'light']"
+    >
       {{ isColor2Copied ? 'Copied!' : colors[1] }}
     </span>
-    <span class="gradientName">{{ gradientName }}</span>
-    <button class="settingButton">
+    <span :class="['gradientName', darkmode ? 'dark' : 'light']">{{
+      gradientName
+    }}</span>
+    <button :class="['settingButton', darkmode ? 'dark' : 'light']">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -64,7 +96,10 @@
         <polyline points="8 6 2 12 8 18"></polyline>
       </svg>
     </button>
-    <button class="settingButton" @click="downloadGradient()">
+    <button
+      :class="['settingButton', darkmode ? 'dark' : 'light']"
+      @click="downloadGradient()"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -81,7 +116,7 @@
         <line x1="12" y1="15" x2="12" y2="3"></line>
       </svg>
     </button>
-    <button class="settingButton">
+    <button :class="['settingButton', darkmode ? 'dark' : 'light']">
       <DarkModeButton
         :style="{ position: 'relative' }"
         @dark-mode-switch="changeDarkMode"
@@ -93,18 +128,30 @@
 
 <script>
 import DarkModeButton from './DarkModeButton.vue';
+import ColorPicker from './ColorPicker.vue';
 import html2canvas from 'html2canvas';
 export default {
   name: 'EditorSettings',
   props: ['colors', 'darkmode', 'gradientName'],
-  components: { DarkModeButton },
+  emits: ['dark-mode-switch', 'color-1-updated'],
+  components: { DarkModeButton, ColorPicker },
   data() {
     return {
       isColor1Copied: false,
       isColor2Copied: false,
+      isColor1PickerOpen: false,
+      isColor2PickerOpen: false,
     };
   },
   methods: {
+    openColorPicker(position, e) {
+      if (position === 1) this.isColor1PickerOpen = !this.isColor1PickerOpen;
+      console.log(this.colors[0]);
+      if (position === 2) this.isColor2PickerOpen = !this.isColor2PickerOpen;
+    },
+    updateColor(color, position) {
+      this.$emit('color-1-updated', color, position);
+    },
     changeDarkMode() {
       this.$emit('dark-mode-switch');
     },
@@ -146,32 +193,55 @@ export default {
   flex-direction: row;
   align-items: center;
   padding: 1rem;
-  position: absolute;
-  top: 50px;
+  position: fixed;
+  top: 60px;
   left: 50%;
   width: fit-content;
-  background: white;
+  z-index: 1000;
   border-radius: 12px;
   transform: translate(-50%, -50%);
+}
+
+.darkContainer {
+  backdrop-filter: blur(12px);
+  background: #00000091;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lightContainer {
+  background: white;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
+
+.dark {
+  color: white;
+}
+
+.light {
+  color: black;
+}
+
 .colorBox {
   height: 20px;
   width: 20px;
   display: inline-flex;
   border-radius: 7px;
   margin-left: 1rem;
+  position: relative;
+}
+
+.colorBox:hover {
+  cursor: pointer;
 }
 
 .colorText {
   padding: 0.35rem 0.5rem;
-  margin: 0 1rem;
+  margin: 0 0.5rem;
   border-radius: 7px;
   width: 97px;
 }
 
 .gradientName {
-  color: black;
   display: inline-block;
   margin-right: 1rem;
 }
@@ -184,13 +254,21 @@ export default {
   border-radius: 7px;
   background: transparent;
 }
-.settingButton:hover {
-  background: rgba(227, 227, 227, 0.528);
+.settingButton.light:hover {
+  background: rgba(227, 227, 227, 0.425);
+  cursor: pointer;
+}
+.colorText.light:hover {
+  background: rgba(227, 227, 227, 0.425);
   cursor: pointer;
 }
 
-.colorText:hover {
-  background: rgba(227, 227, 227, 0.528);
+.colorText.dark:hover {
+  background: #ececec16;
+  cursor: pointer;
+}
+.settingButton.dark:hover {
+  background: #ececec16;
   cursor: pointer;
 }
 </style>

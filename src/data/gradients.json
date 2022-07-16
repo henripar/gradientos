@@ -1,10 +1,10 @@
 [
   {
-    "name": "Mystic",
+    "name": "Mystic Mist",
     "colors": ["#b993d6", "#8ca6db"]
   },
   {
-    "name": "Candy",
+    "name": "Candy Town",
     "colors": ["#d8848b", "#cb96da"]
   },
   {
@@ -44,7 +44,7 @@
     "colors": ["#FFFBAB", "#F9DE70"]
   },
   {
-    "name": "The Mighty Jungle",
+    "name": "Touch of Mojito",
     "colors": ["#fcffab", "#acffa3"]
   }
 ]

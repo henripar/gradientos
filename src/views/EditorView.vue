@@ -8,8 +8,9 @@
   </div>
   <EditorSettings
     :colors="colors"
-    :background="background"
-    :gradientName="colorName"
+    :gradientName="gradientName ?? colorName ?? 'Custom'"
+    :darkmode="darkmode"
+    @color-1-updated="updateColor"
     @dark-mode-switch="changeDarkMode"
   />
   <InfoSection :colors="colors" :darkmode="darkmode" />
@@ -27,7 +28,8 @@ import IconsSection from '../components/IconsSection.vue';
 
 export default {
   name: 'editor',
-  props: ['gradientColors', 'colorName', 'darkmode'],
+  props: ['gradientColors', 'colorName', 'darkmode', 'gradients'],
+  emits: ['dark-mode-switch'],
   components: {
     EditorSettings,
     InfoSection,
@@ -39,6 +41,7 @@ export default {
   data() {
     return {
       colors: ['#d770b2', '#e4ad7a'],
+      gradientName: undefined,
     };
   },
   methods: {
@@ -51,8 +54,16 @@ export default {
     changeDarkMode() {
       this.$emit('dark-mode-switch');
     },
+    updateColor(color, position) {
+      // this.colors[0] = color;
+      var test = [...this.colors];
+      test[position] = color;
+      this.colors = test.slice();
+      this.gradientName = 'Custom';
+      // this.gradientColors = test;
+    },
   },
-  beforeMount() {
+  created() {
     if (this.gradientColors !== undefined) {
       this.colors = this.gradientColors;
     }
