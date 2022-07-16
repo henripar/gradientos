@@ -80,7 +80,14 @@
     <span :class="['gradientName', darkmode ? 'dark' : 'light']">{{
       gradientName
     }}</span>
-    <button :class="['settingButton', darkmode ? 'dark' : 'light']">
+    <button
+      @click="this.isCopyCSSModalOpen = !isCopyCSSModalOpen"
+      :class="[
+        'settingButton',
+        darkmode ? 'dark' : 'light',
+        isCopyCSSModalOpen ? 'activeButton' : null,
+      ]"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -124,23 +131,30 @@
       />
     </button>
   </div>
+  <CopyCSSModal
+    :darkmode="darkmode"
+    :colors="colors"
+    v-if="isCopyCSSModalOpen"
+  />
 </template>
 
 <script>
 import DarkModeButton from './DarkModeButton.vue';
 import ColorPicker from './ColorPicker.vue';
 import html2canvas from 'html2canvas';
+import CopyCSSModal from './CopyCSSModal.vue';
 export default {
   name: 'EditorSettings',
   props: ['colors', 'darkmode', 'gradientName'],
   emits: ['dark-mode-switch', 'color-1-updated'],
-  components: { DarkModeButton, ColorPicker },
+  components: { DarkModeButton, ColorPicker, CopyCSSModal },
   data() {
     return {
       isColor1Copied: false,
       isColor2Copied: false,
       isColor1PickerOpen: false,
       isColor2PickerOpen: false,
+      isCopyCSSModalOpen: false,
     };
   },
   methods: {
@@ -258,6 +272,12 @@ export default {
   background: rgba(227, 227, 227, 0.425);
   cursor: pointer;
 }
+
+.activeButton.dark {
+  background: #ececec16;
+  cursor: pointer;
+}
+
 .colorText.light:hover {
   background: rgba(227, 227, 227, 0.425);
   cursor: pointer;
