@@ -1,15 +1,21 @@
 <template>
   <div :style="generateBackground()" class="infoSectionContainer">
-    <h2 :style="generateTextGradient(colors)" class="header2">
-      Welcome to gradientos!
-    </h2>
-    <p :style="generateTextColor()">
-      With Gradientos you can quickly test how different gradients would look on
-      some common UI elements.
-    </p>
-    <button :style="generateButtonStyles(colors)" class="btn">
-      Shuffle colors
-    </button>
+    <div class="infoSectionContent">
+      <h2 :style="generateTextGradient(colors)" class="header2">
+        Welcome to gradientos!
+      </h2>
+      <p :style="generateTextColor()">
+        With Gradientos you can quickly test how different gradients would look
+        on some common UI elements.
+      </p>
+      <button
+        @click="getRandomGradient()"
+        :style="generateButtonStyles(colors)"
+        class="btn"
+      >
+        Shuffle colors
+      </button>
+    </div>
   </div>
 </template>
 
@@ -38,6 +44,9 @@ export default {
           ? '2px 1000px 1px #0c121b inset'
           : '2px 1000px 1px white inset',
       };
+    },
+    getRandomGradient() {
+      this.$emit('randomize-gradient');
     },
     generateBackground() {
       if (this.darkmode === true) {
@@ -79,6 +88,12 @@ export default {
   padding: 2rem;
   text-align: left;
 }
+
+.infoSectionContent {
+  width: 65%;
+  margin: 0 auto;
+}
+
 .btn {
   padding: 1em 2em;
   text-transform: uppercase;

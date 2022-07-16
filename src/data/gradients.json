@@ -21,7 +21,7 @@
   },
   {
     "name": "Pink Panther",
-    "colors": ["#FFC0D6", "#FF559E", "#FF559E"]
+    "colors": ["#FFC0D6", "#e0709f"]
   },
   {
     "name": "Orange Paradise",
@@ -41,10 +41,34 @@
   },
   {
     "name": "Totally Bananas",
-    "colors": ["#FFFBAB", "#F9DE70"]
+    "colors": ["#F9DE70", "#FFFBAB"]
+  },
+  {
+    "name": "Eldorado",
+    "colors": ["#fffbab", "#b59501"]
   },
   {
     "name": "Touch of Mojito",
     "colors": ["#fcffab", "#acffa3"]
+  },
+  {
+    "name": "Fresh Cut Grass",
+    "colors": ["#a5e29c", "#1b7b2c"]
+  },
+  {
+    "name": "Welcome to the Jungle",
+    "colors": ["#3d9c6c", "#9ed478"]
+  },
+  {
+    "name": "Aruba",
+    "colors": ["#42afa1", "#78d4a8"]
+  },
+  {
+    "name": "Tahiti",
+    "colors": ["#62daca", "#10d4a9"]
+  },
+  {
+    "name": "Banana Reef",
+    "colors": ["#62dab4", "#10bed4"]
   }
 ]

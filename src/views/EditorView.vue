@@ -13,7 +13,11 @@
     @color-1-updated="updateColor"
     @dark-mode-switch="changeDarkMode"
   />
-  <InfoSection :colors="colors" :darkmode="darkmode" />
+  <InfoSection
+    @randomize-gradient="getRandomGradient"
+    :colors="colors"
+    :darkmode="darkmode"
+  />
   <TextOverlaySection :colors="colors" />
   <BackgroundImageSection :colors="colors" />
   <IconsSection :darkmode="darkmode" :colors="colors" />
@@ -61,6 +65,12 @@ export default {
       this.colors = test.slice();
       this.gradientName = 'Custom';
       // this.gradientColors = test;
+    },
+    getRandomGradient() {
+      const randomElement =
+        this.gradients[Math.floor(Math.random() * this.gradients.length)];
+      this.colors = randomElement.colors;
+      this.gradientName = randomElement.name;
     },
   },
   created() {

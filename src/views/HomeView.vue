@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     getBackgroundStyle(colors) {
-      const direction = 'to left';
+      const direction = 'to right';
       return {
         background: `linear-gradient(${direction}, ${colors})`,
       };
