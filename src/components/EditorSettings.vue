@@ -31,7 +31,7 @@
       class="colorBox"
     >
       <ColorPicker
-        @color-1-updated="updateColor"
+        @color1Updated="updateColor"
         v-if="isColor1PickerOpen"
         :position="0"
         :color="colors[0]"
@@ -146,7 +146,7 @@ import CopyCSSModal from './CopyCSSModal.vue';
 export default {
   name: 'EditorSettings',
   props: ['colors', 'darkmode', 'gradientName'],
-  emits: ['dark-mode-switch', 'color-1-updated'],
+  emits: ['color1Updated', 'darkModeSwitch'],
   components: { DarkModeButton, ColorPicker, CopyCSSModal },
   data() {
     return {
@@ -164,7 +164,7 @@ export default {
       if (position === 2) this.isColor2PickerOpen = !this.isColor2PickerOpen;
     },
     updateColor(color, position) {
-      this.$emit('color-1-updated', color, position);
+      this.$emit('color1Updated', color, position);
     },
     changeDarkMode() {
       this.$emit('dark-mode-switch');

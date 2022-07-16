@@ -35,7 +35,7 @@ import ShareSection from '../components/ShareSection.vue';
 export default {
   name: 'editor',
   props: ['gradientColors', 'colorName', 'darkmode', 'gradients'],
-  emits: ['dark-mode-switch'],
+  emits: ['dark-mode-switch', 'color1Updated'],
   components: {
     EditorSettings,
     InfoSection,
@@ -67,7 +67,7 @@ export default {
       test[position] = color;
       this.colors = test.slice();
       this.gradientName = 'Custom';
-      // this.gradientColors = test;
+      this.$emit('color1Updated', color, position);
     },
     getRandomGradient() {
       const randomElement =
@@ -79,6 +79,8 @@ export default {
   created() {
     if (this.gradientColors !== undefined) {
       this.colors = this.gradientColors;
+      this.$emit('color1Updated', this.colors[0], 0);
+      this.$emit('color1Updated', this.colors[1], 1);
     }
   },
 };

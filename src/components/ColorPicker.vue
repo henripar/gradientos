@@ -11,13 +11,14 @@ console.log(Chrome);
 export default {
   name: 'ColorPicker',
   props: ['color', 'position'],
+  emits: ['color1Updated'],
   components: {
     Chrome,
   },
   methods: {
     updateValue() {
       console.log(this.color);
-      this.$emit('color-1-updated', this.color.hex);
+      this.$emit('color1Updated', this.color.hex);
     },
   },
   watch: {
@@ -25,7 +26,7 @@ export default {
       handler() {
         console.log(this.color.hex);
         this.$emit(
-          'color-1-updated',
+          'color1Updated',
           this.color?.hex?.toLowerCase() ?? this.color.toLowerCase(),
           this.position
         );

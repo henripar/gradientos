@@ -3,22 +3,31 @@
     :darkmode="darkmode"
     :gradients="gradients"
     @dark-mode-switch="changeDarkMode"
+    @color1Updated="updateColor"
   />
+  <Footer :darkmode="darkmode" :colors="colors" />
 </template>
 
 <script>
 import Gradients from './data/gradients.json';
+import Footer from './components/Footer.vue';
 
 export default {
   data() {
     return {
       gradients: Gradients,
       darkmode: true,
+      colors: ['#e5b178', '#d670b4'],
     };
   },
+  components: { Footer },
+  emits: ['color1Updated'],
   methods: {
     changeDarkMode() {
       this.darkmode = !this.darkmode;
+    },
+    updateColor(color, position) {
+      this.colors[position] = color;
     },
   },
 };
