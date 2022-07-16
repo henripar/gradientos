@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="http://www.luxhue.org"><img src="src/assets/logo.png" alt="Luxhue" width="140"></a>
+  <a href="https://www.gradientos.app"><img src="src/assets/logo.png" alt="Gradientos" width="140"></a>
   <br>
   Gradientos
   <br>
