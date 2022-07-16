@@ -21,6 +21,7 @@
   <TextOverlaySection :colors="colors" />
   <BackgroundImageSection :colors="colors" />
   <IconsSection :darkmode="darkmode" :colors="colors" />
+  <ShareSection :colors="colors" />
 </template>
 
 <script>
@@ -29,6 +30,7 @@ import InfoSection from '../components/InfoSection.vue';
 import BackgroundImageSection from '../components/BackgroundImageSection.vue';
 import TextOverlaySection from '../components/TextOverlaySection.vue';
 import IconsSection from '../components/IconsSection.vue';
+import ShareSection from '../components/ShareSection.vue';
 
 export default {
   name: 'editor',
@@ -40,6 +42,7 @@ export default {
     BackgroundImageSection,
     TextOverlaySection,
     IconsSection,
+    ShareSection,
   },
 
   data() {
