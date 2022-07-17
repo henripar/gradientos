@@ -37,7 +37,7 @@ To add your own gradient to the Gradientos collection: add it in the `gradients.
 }
 ````
 
-**Only 2 color gradients can bew accepted.**
+**Only 2 color gradients can be accepted.**
 
 ## Local Development 
 
