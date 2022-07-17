@@ -192,6 +192,10 @@ button {
   height: 51px;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 pre {
   display: inline-flex;
 }
