@@ -10,6 +10,9 @@
     "@ckpack/vue-color": "^1.2.0",
     "core-js": "^3.8.3",
     "html2canvas": "^1.4.1",
+    "node-polyfill-webpack-plugin": "^2.0.0",
+    "path-browserify": "^1.0.1",
+    "plausible-tracker": "^0.3.8",
     "vue": "^3.2.13",
     "vue-gtag": "^2.0.1",
     "vue-router": "^4.0.3"

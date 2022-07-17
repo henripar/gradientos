@@ -1,15 +1,14 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-import VueGtag from 'vue-gtag';
+
+import plausible from './plugins/plausible';
 
 createApp(App)
   .use(router)
-  .use(
-    VueGtag,
-    {
-      config: { id: 'G-LCN7PG5RYL' },
-    },
-    router
-  )
+  .use(plausible, {
+    domain: 'gradientos.app',
+    hashMode: true,
+    trackLocalhost: false,
+  })
   .mount('#app');
