@@ -21,6 +21,7 @@
         <button
           @click="copyCSSCode('background')"
           :style="darkmode ? { color: 'white' } : { color: 'black' }"
+          :class="darkmode ? 'dark' : 'light'"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -58,6 +59,7 @@ ${colors[1]});
         <button
           @click="copyCSSCode('text')"
           :style="darkmode ? { color: 'white' } : { color: 'black' }"
+          :class="darkmode ? 'dark' : 'light'"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -171,9 +173,13 @@ export default {
   flex-direction: row;
   align-items: center;
 }
-button:hover {
+
+.dark:hover {
   background: #ececec16;
-  cursor: pointer;
+}
+
+.light:hover {
+  background: rgba(227, 227, 227, 0.425);
 }
 
 button {
@@ -190,8 +196,13 @@ pre {
   display: inline-flex;
 }
 
+code {
+  font-family: monospace;
+}
+
 p {
   margin: 1rem 0;
+  font-weight: 600;
 }
 
 @media screen and (max-width: 680px) {

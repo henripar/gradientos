@@ -290,6 +290,11 @@ export default {
   cursor: pointer;
 }
 
+.activeButton.light {
+  background: rgba(227, 227, 227, 0.425);
+  cursor: pointer;
+}
+
 .colorText.light:hover {
   background: rgba(227, 227, 227, 0.425);
   cursor: pointer;
