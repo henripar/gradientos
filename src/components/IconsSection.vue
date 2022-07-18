@@ -15,16 +15,16 @@
           class="svgicon"
         >
           <defs>
-            <linearGradient id="MyGradient">
-              <stop offset="5%" stop-color="var(--gradient-color-1)" />
-              <stop offset="95%" stop-color="var(--gradient-color-2)" />
+            <linearGradient id="currentGradient">
+              <stop offset="5%" :stop-color="colors[0]" />
+              <stop offset="95%" :stop-color="colors[1]" />
             </linearGradient>
           </defs>
           <path
-            class="hihi"
+            class="svgGradient"
             d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"
           ></path>
-          <path class="hihi" d="M13.73 21a2 2 0 01-3.46 0"></path>
+          <path class="svgGradient" d="M13.73 21a2 2 0 01-3.46 0"></path>
         </svg>
         <h2 class="iconHeader">Alert</h2>
         <p class="paragraph">
@@ -44,8 +44,14 @@
           stroke-linejoin="round"
           class="svgicon"
         >
+          <defs>
+            <linearGradient id="currentGradient">
+              <stop offset="5%" :stop-color="colors[0]" />
+              <stop offset="95%" :stop-color="colors[1]" />
+            </linearGradient>
+          </defs>
           <path
-            class="hihi"
+            class="svgGradient"
             d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042l-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893l-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042l.348-1.97M7.48 20.364l3.126-17.727"
           ></path>
         </svg>
@@ -67,8 +73,14 @@
           stroke-linejoin="round"
           class="svgicon"
         >
+          <defs>
+            <linearGradient id="currentGradient">
+              <stop offset="5%" :stop-color="colors[0]" />
+              <stop offset="95%" :stop-color="colors[1]" />
+            </linearGradient>
+          </defs>
           <path
-            class="hihi"
+            class="svgGradient"
             d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"
           ></path>
         </svg>
@@ -88,8 +100,17 @@
           stroke-linejoin="round"
           class="svgicon"
         >
-          <path class="hihi" d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-          <circle class="hihi" cx="12" cy="7" r="4"></circle>
+          <defs>
+            <linearGradient id="currentGradient">
+              <stop offset="5%" :stop-color="colors[0]" />
+              <stop offset="95%" :stop-color="colors[1]" />
+            </linearGradient>
+          </defs>
+          <path
+            class="svgGradient"
+            d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"
+          ></path>
+          <circle class="svgGradient" cx="12" cy="7" r="4"></circle>
         </svg>
         <h2 class="iconHeader">Profile</h2>
         <p class="paragraph">
@@ -155,8 +176,8 @@ export default {
 </script>
 
 <style scoped>
-.hihi {
-  stroke: url(#MyGradient);
+.svgGradient {
+  stroke: url(#currentGradient);
 }
 .cardRow {
   display: flex;
