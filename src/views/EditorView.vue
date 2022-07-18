@@ -77,13 +77,28 @@ export default {
       this.$emit('color1Updated', this.colors[0], 0);
       this.$emit('color1Updated', this.colors[1], 1);
     },
+    spaceUpEvent(e) {
+      if (e.keyCode === 32) {
+        e.preventDefault();
+        this.getRandomGradient();
+      }
+    },
+    spacePressEvent(e) {
+      e.preventDefault();
+    },
   },
   created() {
     if (this.gradientColors !== undefined) {
       this.colors = this.gradientColors;
       this.$emit('color1Updated', this.colors[0], 0);
       this.$emit('color1Updated', this.colors[1], 1);
+      window.addEventListener('keyup', this.spaceUpEvent);
+      window.addEventListener('keypress', this.spacePressEvent);
     }
+  },
+  destroyed() {
+    window.removeEventListener('keyup', this.spaceUpEvent);
+    window.removeEventListener('keypress', this.spacePressEvent);
   },
 };
 </script>

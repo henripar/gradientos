@@ -5,6 +5,21 @@
         Gradient on grayscale.
       </h1>
     </div>
+    <div class="info">
+      <h2 class="infoHeader">Did you know?</h2>
+      <p class="infoText">
+        You can shuffle
+        <span
+          :style="{
+            background: `linear-gradient(to right, ${colors[0]}, ${colors[1]})`,
+            '-webkit-background-clip': 'text',
+            '-webkit-text-fill-color': 'transparent',
+          }"
+          >colors</span
+        >
+        by gently pressing space on your keyboard.
+      </p>
+    </div>
   </div>
 </template>
 
@@ -38,6 +53,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   margin: 0;
+  position: relative;
 }
 
 .backgroundBlur {
@@ -56,6 +72,25 @@ export default {
   -webkit-text-fill-color: transparent;
 }
 
+.info {
+  position: absolute;
+  right: 50px;
+  bottom: 60px;
+  text-align: left;
+}
+
+.infoHeader {
+  color: rgba(255, 255, 255, 0.813);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.infoText {
+  background: linear-gradient(to right, #ffffff9b, #ffffffc0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 @media screen and (max-width: 1030px) {
   .header1 {
     width: min-content;
@@ -67,6 +102,15 @@ export default {
 @media screen and (max-width: 800px) {
   .header1 {
     font-size: 3rem;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .info {
+    position: relative;
+    right: inherit;
+    margin: 1rem;
   }
 }
 </style>
