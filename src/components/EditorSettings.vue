@@ -9,6 +9,7 @@
         color: darkmode ? '#fff' : '#000',
       }"
       to="/"
+      aria-label="To home"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -87,6 +88,7 @@
         darkmode ? 'dark' : 'light',
         isCopyCSSModalOpen ? 'activeButton' : null,
       ]"
+      aria-label="Copy gradient CSS"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -106,6 +108,7 @@
     <button
       :class="['settingButton', darkmode ? 'dark' : 'light']"
       @click="downloadGradient()"
+      aria-label="Download Gradient as image"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +126,10 @@
         <line x1="12" y1="15" x2="12" y2="3"></line>
       </svg>
     </button>
-    <button :class="['settingButton', darkmode ? 'dark' : 'light']">
+    <button
+      :class="['settingButton', darkmode ? 'dark' : 'light']"
+      aria-label="Switch dark mode"
+    >
       <DarkModeButton
         :style="{ position: 'relative' }"
         @dark-mode-switch="changeDarkMode"
