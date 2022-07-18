@@ -309,6 +309,10 @@ export default {
   cursor: pointer;
 }
 
+button {
+  outline: none;
+}
+
 @media screen and (max-width: 680px) {
   .container {
     flex-direction: column;
