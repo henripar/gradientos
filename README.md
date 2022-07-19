@@ -24,7 +24,7 @@
   <a href="#about">About</a> •
   <a href="#contributing">Contributing</a> •
    <a href="#screenshots">Screenshots</a> •
-  <a href="./LICENSE.md">License</a> 
+  <a href="https://github.com/henripar/gradientos/blob/main/LICENSE">License</a> 
 </p>
 
 ## About
