@@ -26,3 +26,19 @@ you may proceed to create that fix/funcitonality and raise a pull request.
 2. Do the required code change to fix a bug / add feature.
 3. Make sure to test your code doesn't brake any existing features.
 4. Create a pull request and link it to the related issue!
+
+## Local development
+
+To get your local development environment up and running, run the following commands.
+
+### Install dependencies
+
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+
+```
+npm run serve
+```
