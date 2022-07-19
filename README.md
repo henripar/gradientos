@@ -23,7 +23,8 @@
 <p align="center">
   <a href="#about">About</a> •
   <a href="#contributing">Contributing</a> •
-  <a href="#local-development">Local Development</a> 
+   <a href="#screenshots">Screenshots</a> •
+  <a href="./LICENSE.md">License</a> 
 </p>
 
 ## About
@@ -34,9 +35,17 @@ Gradientos is a web app which can help you choose gradients by simply showing yo
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+For more details, see our [contributing guidelines](./CONTRIBUTING.md).
+
+### Creating issues
+
+If you wish to propose a new feature or report a bug, you can do so by creating an issue.
+
 ### Add Gradient
 
-To add your own gradient to the Gradientos collection: add it in the `gradients.json` file located in `src/data` directory.
+You can add new gradients to our collection.
+
+To add your own gradient: add it in the `gradients.json` file located in `src/data` directory.
 
 #### Format
 
@@ -49,23 +58,7 @@ To add your own gradient to the Gradientos collection: add it in the `gradients.
 
 **Only 2 color gradients can be accepted.**
 
-## Local Development 
+## Screenshots
 
-### Install dependencies
-
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
+<img src="https://i.ibb.co/QrXbpR0/gradientos-cover.png" alt="gradientos-cover" width="49%" border="0" /> <img src="https://i.ibb.co/SVYB5Jb/gradients-screenshot.png" alt="gradients-screenshot" width="49%" border="0">
 
