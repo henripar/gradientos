@@ -78,9 +78,25 @@
     >
       {{ isColor2Copied ? 'Copied!' : colors[1] }}
     </span>
-    <span :class="['gradientName', darkmode ? 'dark' : 'light']">{{
-      gradientName
-    }}</span>
+    <span
+      @click.prevent="openSearch"
+      :class="['gradientName', darkmode ? 'dark' : 'light']"
+    >
+      <span class="gradientNameText">{{ gradientName }} </span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg
+    ></span>
     <button
       @click="openCSSCopyModal()"
       :class="[
@@ -151,8 +167,8 @@ import html2canvas from 'html2canvas';
 import CopyCSSModal from './CopyCSSModal.vue';
 export default {
   name: 'EditorSettings',
-  props: ['colors', 'darkmode', 'gradientName'],
-  emits: ['color1Updated', 'darkModeSwitch'],
+  props: ['colors', 'darkmode', 'gradientName', 'isSearchOpen'],
+  emits: ['color1Updated', 'darkModeSwitch', 'open-search'],
   components: { DarkModeButton, ColorPicker, CopyCSSModal },
   data() {
     return {
@@ -163,7 +179,20 @@ export default {
       isCopyCSSModalOpen: false,
     };
   },
+  watch: {
+    isSearchOpen: {
+      handler() {
+        this.closeModals();
+      },
+      immediate: true,
+    },
+  },
   methods: {
+    closeModals() {
+      this.isCopyCSSModalOpen = false;
+      this.isColor1PickerOpen = false;
+      this.isColor2PickerOpen = false;
+    },
     openCSSCopyModal() {
       this.isCopyCSSModalOpen = !this.isCopyCSSModalOpen;
       this.isColor1PickerOpen = false;
@@ -180,6 +209,10 @@ export default {
         this.isColor1PickerOpen = false;
         this.isCopyCSSModalOpen = false;
       }
+    },
+    openSearch() {
+      this.closeModals();
+      this.$emit('open-search');
     },
     updateColor(color, position) {
       this.$emit('color1Updated', color, position);
@@ -276,7 +309,32 @@ export default {
 .gradientName {
   display: inline-block;
   margin-right: 1rem;
+  position: relative;
+  cursor: pointer;
 }
+
+.gradientName > svg {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in;
+}
+
+.gradientNameText {
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.gradientName:hover > .gradientNameText {
+  opacity: 0;
+}
+
+.gradientName:hover > svg {
+  opacity: 1;
+}
+
 .settingButton {
   display: flex;
   align-items: center;
@@ -321,11 +379,8 @@ button {
 
 @media screen and (max-width: 680px) {
   .container {
-    flex-direction: column;
-    top: 23%;
-    left: 10%;
-    height: 300px;
     justify-content: space-around;
+    width: 90%;
   }
   .colorText {
     display: none;
