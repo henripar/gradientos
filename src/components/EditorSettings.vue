@@ -44,22 +44,7 @@
     >
       {{ isColor1Copied ? 'Copied!' : colors[0] }}
     </span>
-
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      :class="darkmode ? 'dark' : 'light'"
-    >
-      <line x1="5" y1="12" x2="19" y2="12"></line>
-      <polyline points="12 5 19 12 12 19"></polyline>
-    </svg>
+    <GradientDirectionPicker :darkmode="darkmode" @direction-change="changeDirection"></GradientDirectionPicker>
     <span
       :style="{ background: colors[1] }"
       class="colorBox"
@@ -149,11 +134,12 @@ import DarkModeButton from './DarkModeButton.vue';
 import ColorPicker from './ColorPicker.vue';
 import html2canvas from 'html2canvas';
 import CopyCSSModal from './CopyCSSModal.vue';
+import GradientDirectionPicker from './GradientDirectionPicker.vue';
 export default {
   name: 'EditorSettings',
   props: ['colors', 'darkmode', 'gradientName'],
-  emits: ['color1Updated', 'darkModeSwitch'],
-  components: { DarkModeButton, ColorPicker, CopyCSSModal },
+  emits: ['color1Updated', 'darkModeSwitch', 'directionChange'],
+  components: { DarkModeButton, ColorPicker, CopyCSSModal, GradientDirectionPicker },
   data() {
     return {
       isColor1Copied: false,
@@ -183,6 +169,9 @@ export default {
     },
     updateColor(color, position) {
       this.$emit('color1Updated', color, position);
+    },
+    changeDirection(direction) {
+      this.$emit('directionChange', direction);
     },
     changeDarkMode() {
       this.$emit('dark-mode-switch');

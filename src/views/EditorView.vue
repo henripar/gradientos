@@ -12,6 +12,7 @@
     :darkmode="darkmode"
     @color-1-updated="updateColor"
     @dark-mode-switch="changeDarkMode"
+    @direction-change="changeDirection"
   />
   <InfoSection
     @randomize-gradient="getRandomGradient"
@@ -35,7 +36,7 @@ import ShareSection from '../components/ShareSection.vue';
 export default {
   name: 'editor',
   props: ['gradientColors', 'colorName', 'darkmode', 'gradients'],
-  emits: ['dark-mode-switch', 'color1Updated'],
+  emits: ['dark-mode-switch', 'color1Updated', 'directionChange'],
   components: {
     EditorSettings,
     InfoSection,
@@ -48,14 +49,14 @@ export default {
   data() {
     return {
       colors: ['#d770b2', '#e4ad7a'],
+      direction: 90,
       gradientName: undefined,
     };
   },
   methods: {
     generateGradient(colors) {
-      const direction = 'to right';
       return {
-        background: `linear-gradient(${direction}, ${colors})`,
+        background: `linear-gradient(${this.direction}deg, ${colors})`,
       };
     },
     changeDarkMode() {
@@ -68,6 +69,11 @@ export default {
       this.colors = test.slice();
       this.gradientName = 'Custom';
       this.$emit('color1Updated', color, position);
+    },
+    changeDirection(direction) {
+      this.direction = direction;
+      this.gradientName = 'Custom';
+      this.$emit('directionChange', direction);
     },
     getRandomGradient() {
       const randomElement =
