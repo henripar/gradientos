@@ -29,6 +29,7 @@
 <script>
 import gradientsJson from '../data/gradients.json';
 import uiGradientsJson from '../data/uigradients.json';
+import webGradientsJson from '../data/webGradients.json';
 
 export default {
   name: 'SearchResults',
@@ -37,6 +38,7 @@ export default {
     return {
       gradients: gradientsJson,
       uiGradients: uiGradientsJson,
+      webGradients: webGradientsJson,
       listGradients: [],
     };
   },
@@ -56,6 +58,22 @@ export default {
     });
 
     this.gradients = this.gradients.concat(this.uiGradients);
+
+    this.webGradients = this.webGradients.filter((webGradient) => {
+      return webGradient.gradient.length === 2;
+    });
+
+    this.webGradients.forEach((gradient, index) => {
+      let newGradientModel = {
+        name: gradient.name,
+        colors: [gradient.gradient[0].color, gradient.gradient[1].color],
+        source: 'WebGradients',
+      };
+      this.webGradients[index] = newGradientModel;
+    });
+
+    this.gradients = this.gradients.concat(this.webGradients);
+
     this.gradients = this.gradients.sort((i, j) => {
       if (i.name < j.name) {
         return -1;

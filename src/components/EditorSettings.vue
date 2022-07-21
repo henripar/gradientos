@@ -79,7 +79,7 @@
       {{ isColor2Copied ? 'Copied!' : colors[1] }}
     </span>
     <span
-      @click.prevent="this.$emit('open-search')"
+      @click.prevent="openSearch"
       :class="['gradientName', darkmode ? 'dark' : 'light']"
     >
       <span class="gradientNameText">{{ gradientName }} </span>
@@ -167,7 +167,7 @@ import html2canvas from 'html2canvas';
 import CopyCSSModal from './CopyCSSModal.vue';
 export default {
   name: 'EditorSettings',
-  props: ['colors', 'darkmode', 'gradientName'],
+  props: ['colors', 'darkmode', 'gradientName', 'isSearchOpen'],
   emits: ['color1Updated', 'darkModeSwitch', 'open-search'],
   components: { DarkModeButton, ColorPicker, CopyCSSModal },
   data() {
@@ -179,7 +179,20 @@ export default {
       isCopyCSSModalOpen: false,
     };
   },
+  watch: {
+    isSearchOpen: {
+      handler() {
+        this.closeModals();
+      },
+      immediate: true,
+    },
+  },
   methods: {
+    closeModals() {
+      this.isCopyCSSModalOpen = false;
+      this.isColor1PickerOpen = false;
+      this.isColor2PickerOpen = false;
+    },
     openCSSCopyModal() {
       this.isCopyCSSModalOpen = !this.isCopyCSSModalOpen;
       this.isColor1PickerOpen = false;
@@ -196,6 +209,10 @@ export default {
         this.isColor1PickerOpen = false;
         this.isCopyCSSModalOpen = false;
       }
+    },
+    openSearch() {
+      this.closeModals();
+      this.$emit('open-search');
     },
     updateColor(color, position) {
       this.$emit('color1Updated', color, position);
@@ -362,11 +379,8 @@ button {
 
 @media screen and (max-width: 680px) {
   .container {
-    flex-direction: column;
-    top: 23%;
-    left: 10%;
-    height: 300px;
     justify-content: space-around;
+    width: 90%;
   }
   .colorText {
     display: none;

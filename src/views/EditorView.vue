@@ -42,6 +42,7 @@
     :colors="colors"
     :gradientName="gradientName ?? colorName ?? 'Custom'"
     :darkmode="darkmode"
+    :isSearchOpen="isSearchOpen"
     @color-1-updated="updateColor"
     @dark-mode-switch="changeDarkMode"
     @open-search="openSearch"
@@ -134,6 +135,8 @@ export default {
       if (e.keyCode === 32 && e.ctrlKey) {
         e.preventDefault();
         this.isSearchOpen = !this.isSearchOpen;
+
+        this.closeModals = true;
       } else if (e.keyCode === 32 && this.isSearchOpen == false) {
         e.preventDefault();
         this.getRandomGradient();
@@ -196,6 +199,12 @@ export default {
   }
   .github-corner .octo-arm {
     animation: octocat-wave 560ms ease-in-out;
+  }
+}
+
+@media (max-width: 850px) {
+  .github-corner {
+    display: none;
   }
 }
 </style>
