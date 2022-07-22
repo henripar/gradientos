@@ -55,7 +55,7 @@ export default {
         };
       } else {
         return {
-          background: '#fff',
+          background: 'linear-gradient(90deg, #fcfcfc, #ffeabf33)',
         };
       }
     },

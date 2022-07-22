@@ -109,7 +109,7 @@ export default {
 }
 
 .lightBG {
-  background: #fff;
+  background: linear-gradient(90deg, #fcfcfc, #ffeabf33);
 }
 
 @media screen and (max-width: 500px) {
