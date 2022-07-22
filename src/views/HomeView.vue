@@ -91,6 +91,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.5s ease-in-out;
 }
 
 .gradientListContainer {
@@ -106,14 +107,17 @@ export default {
 }
 
 .gradient-display:hover > .gradientName {
-  display: block;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .gradientName {
-  display: none;
+  opacity: 0;
+  transform: scale(0.6);
   font-size: 32px;
   font-weight: 600;
   color: rgb(255, 255, 255);
+  transition: all 0.3s 0s ease-in-out;
 }
 
 .darkBG {
@@ -121,7 +125,7 @@ export default {
 }
 
 .lightBG {
-  background: white;
+  background: linear-gradient(90deg, #fcfcfc, #ffeabf33);
 }
 
 .dark {

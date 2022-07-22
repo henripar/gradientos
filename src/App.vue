@@ -38,6 +38,11 @@ export default {
   margin: 0;
   font-family: 'Roboto', sans-serif;
 }
+*::selection {
+  background: #e4ad7a;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+}
 
 #app {
   font-family: 'Roboto', sans-serif;

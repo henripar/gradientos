@@ -86,8 +86,8 @@ export default {
   background: #0c121b;
 }
 
-.lightBg {
-  background: white;
+.lightBG {
+  background: linear-gradient(90deg, #fcfcfc, #ffeabf33);
 }
 
 .dark {
