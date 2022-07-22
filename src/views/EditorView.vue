@@ -54,8 +54,10 @@
   />
   <TextOverlaySection :colors="colors" />
   <BackgroundImageSection :colors="colors" />
-  <IconsSection :darkmode="darkmode" :colors="colors" />
+  <IconsSection :colors="colors" :darkmode="darkmode" />
+  <TypographySection :colors="colors" :darkmode="darkmode" />
   <ShareSection :colors="colors" />
+  <!-- <IconsSection :darkmode="darkmode" :colors="colors" />  -->
   <Search
     @update-colors="changeGradient"
     @close-search="isSearchOpen = !isSearchOpen"
@@ -73,6 +75,7 @@ import TextOverlaySection from '../components/TextOverlaySection.vue';
 import IconsSection from '../components/IconsSection.vue';
 import ShareSection from '../components/ShareSection.vue';
 import Search from '../components/Search.vue';
+import TypographySection from '../components/TypographySection.vue';
 
 export default {
   name: 'editor',
@@ -86,6 +89,7 @@ export default {
     IconsSection,
     ShareSection,
     Search,
+    TypographySection,
   },
 
   data() {
