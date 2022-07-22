@@ -40,7 +40,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .button {
   cursor: pointer;
   padding: 0.35rem;
