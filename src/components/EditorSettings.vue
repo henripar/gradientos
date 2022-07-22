@@ -44,7 +44,38 @@
     >
       {{ isColor1Copied ? 'Copied!' : colors[0] }}
     </span>
-    <GradientDirectionPicker :darkmode="darkmode" @direction-change="changeDirection"></GradientDirectionPicker>
+    <button
+      @click="openDirectionPicker"
+      :class="[
+        'settingButton',
+        darkmode ? 'dark' : 'light',
+        isDirectionPickerOpen ? 'activeButton' : null,
+      ]"
+      >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        >
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </button>
+    <DirectionPicker
+      v-if="isDirectionPickerOpen"
+      :class="[
+        'directionPickerContainer',
+        darkmode ? 'darkContainer' : 'lightContainer',
+        darkmode ? 'dark' : 'light'
+      ]"
+      @direction-change="changeDirection"
+    />
     <span
       :style="{ background: colors[1] }"
       class="colorBox"
@@ -125,6 +156,7 @@
   <CopyCSSModal
     :darkmode="darkmode"
     :colors="colors"
+    :direction="direction"
     v-if="isCopyCSSModalOpen"
   />
 </template>
@@ -134,12 +166,12 @@ import DarkModeButton from './DarkModeButton.vue';
 import ColorPicker from './ColorPicker.vue';
 import html2canvas from 'html2canvas';
 import CopyCSSModal from './CopyCSSModal.vue';
-import GradientDirectionPicker from './GradientDirectionPicker.vue';
+import DirectionPicker from './DirectionPicker.vue';
 export default {
   name: 'EditorSettings',
-  props: ['colors', 'darkmode', 'gradientName'],
+  props: ['colors', 'darkmode', 'gradientName', 'direction'],
   emits: ['color1Updated', 'darkModeSwitch', 'directionChange'],
-  components: { DarkModeButton, ColorPicker, CopyCSSModal, GradientDirectionPicker },
+  components: { DarkModeButton, ColorPicker, CopyCSSModal, DirectionPicker },
   data() {
     return {
       isColor1Copied: false,
@@ -147,6 +179,7 @@ export default {
       isColor1PickerOpen: false,
       isColor2PickerOpen: false,
       isCopyCSSModalOpen: false,
+      isDirectionPickerOpen: false,
     };
   },
   methods: {
@@ -154,6 +187,7 @@ export default {
       this.isCopyCSSModalOpen = !this.isCopyCSSModalOpen;
       this.isColor1PickerOpen = false;
       this.isColor2PickerOpen = false;
+      this.isDirectionPickerOpen = false;
     },
     openColorPicker(position) {
       if (position === 1) {
@@ -166,6 +200,13 @@ export default {
         this.isColor1PickerOpen = false;
         this.isCopyCSSModalOpen = false;
       }
+      this.isDirectionPickerOpen = false;
+    },
+    openDirectionPicker() {
+      this.isDirectionPickerOpen = !this.isDirectionPickerOpen;
+      this.isColor2PickerOpen = false;
+      this.isColor1PickerOpen = false;
+      this.isCopyCSSModalOpen = false;
     },
     updateColor(color, position) {
       this.$emit('color1Updated', color, position);
@@ -306,6 +347,11 @@ export default {
 
 button {
   outline: none;
+}
+
+.directionPickerContainer {
+  position: absolute;
+  top: 80px;
 }
 
 @media screen and (max-width: 680px) {

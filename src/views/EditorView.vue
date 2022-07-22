@@ -10,6 +10,7 @@
     :colors="colors"
     :gradientName="gradientName ?? colorName ?? 'Custom'"
     :darkmode="darkmode"
+    :direction="direction"
     @color-1-updated="updateColor"
     @dark-mode-switch="changeDarkMode"
     @direction-change="changeDirection"
