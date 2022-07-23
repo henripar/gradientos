@@ -58,12 +58,13 @@
 <script>
 export default {
   name: 'typography',
-  props: ['colors', 'darkmode'],
+  props: ['colors', 'darkmode', 'direction'],
   methods: {
     createCSSVariables() {
       return {
         '--gradient-color-1': this.colors[0],
         '--gradient-color-2': this.colors[1],
+        '--gradient-direction': this.direction + 'deg',
       };
     },
   },
@@ -138,7 +139,7 @@ p {
 
 .gradientText {
   background: linear-gradient(
-    to right,
+    var(--gradient-direction),
     var(--gradient-color-1),
     var(--gradient-color-2)
   );

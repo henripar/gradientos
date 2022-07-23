@@ -22,9 +22,14 @@
             stroke-linejoin="round"
           >
             <defs>
-              <linearGradient id="currentGradient">
-                <stop offset="5%" :stop-color="colors[0]" />
-                <stop offset="95%" :stop-color="colors[1]" />
+              <linearGradient
+                id="currentGradient"
+                gradientUnits="userSpaceOnUse"
+                :gradientTransform="`rotate(${direction - 90}, 12, 12)`"
+              >
+                >
+                <stop offset="1%" :stop-color="colors[0]" />
+                <stop offset="99%" :stop-color="colors[1]" />
               </linearGradient>
             </defs>
             <path
@@ -209,11 +214,14 @@
 </template>
 
 <script>
+import calculateAngle from '../utils/calculateAngle.js';
 export default {
   name: 'TestSection',
-  props: ['colors', 'darkmode'],
+  props: ['colors', 'darkmode', 'direction'],
   data() {
-    return {};
+    return {
+      calculateAngle: calculateAngle,
+    };
   },
   methods: {
     createCSSVariables() {
