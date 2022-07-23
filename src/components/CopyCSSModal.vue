@@ -206,9 +206,7 @@ p {
 
 @media screen and (max-width: 680px) {
   .copyCSSModalContainer {
-    left: 60%;
-    width: 67%;
-    top: 225px;
+    max-width: 90%;
   }
   .cssValue {
     overflow-x: auto;

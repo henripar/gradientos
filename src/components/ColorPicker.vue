@@ -48,11 +48,13 @@ export default {
 .vc-checkerboard {
   display: none;
 }
+
+.vc-chrome-controls {
+  display: flex !important;
+  align-items: center !important;
+}
+
 .vc-chrome-fields-wrap {
   display: none;
-}
-.vc-chrome-active-color {
-  width: 10px;
-  height: 10px;
 }
 </style>
