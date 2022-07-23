@@ -10,7 +10,7 @@
       </p>
       <button
         @click="getRandomGradient()"
-        :style="generateButtonStyles(colors)"
+        :style="generateButtonStyles(colors, direction)"
         class="btn"
       >
         Shuffle colors
@@ -20,24 +20,28 @@
 </template>
 
 <script>
+import calculateAngle from '../utils/calculateAngle.js';
+
 export default {
   name: 'InfoSection',
-  props: ['colors', 'darkmode'],
+  props: ['colors', 'darkmode', 'direction'],
   methods: {
     generateTextGradient(colors) {
       return {
         background: `-webkit-linear-gradient(
-    40deg,
+    ${calculateAngle(this.direction)}deg,
     ${colors[0]},
     ${colors[1]}
   )`,
         '-webkit-background-clip': 'text',
       };
     },
-    generateButtonStyles(colors) {
+    generateButtonStyles(colors, direction) {
       return {
         backgroundImage: `
-    -webkit-linear-gradient(101deg, ${colors[0]}, ${colors[1]})
+    -webkit-linear-gradient(${calculateAngle(direction)}deg, ${colors[0]}, ${
+          colors[1]
+        })
         `,
         color: this.darkmode ? '#fff' : '#000',
         'box-shadow': this.darkmode

@@ -13,7 +13,7 @@
 <script>
 export default {
   name: 'BackgrounfImageSeciton',
-  props: ['colors'],
+  props: ['colors', 'direction'],
   methods: {
     generateGradient(colors) {
       let transparentColors = [...colors];
@@ -21,7 +21,7 @@ export default {
         transparentColors[index] = this.addAlpha(color, 0.5);
       });
       return {
-        'background-image': `linear-gradient(${transparentColors[0]}, ${transparentColors[1]}),
+        'background-image': `linear-gradient( ${this.direction}deg, ${transparentColors[0]}, ${transparentColors[1]}),
     url('https://images.unsplash.com/photo-1423347834838-5162bb452ca7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80')`,
       };
     },

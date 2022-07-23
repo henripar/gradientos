@@ -24,14 +24,15 @@
 </template>
 
 <script>
+import calculateAngle from '../utils/calculateAngle.js';
 export default {
   name: 'TextOverlaySection',
-  props: ['colors'],
+  props: ['colors', 'direction'],
   methods: {
     generateGradient(colors) {
       return {
         background: `-webkit-linear-gradient(
-    40deg,
+    ${calculateAngle(this.direction)}deg,
     ${colors[0]},
     ${colors[1]}
   )`,

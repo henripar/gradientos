@@ -53,12 +53,17 @@
     @randomize-gradient="getRandomGradient"
     :colors="colors"
     :darkmode="darkmode"
+    :direction="direction"
   />
-  <TextOverlaySection :colors="colors" />
-  <BackgroundImageSection :colors="colors" />
-  <IconsSection :colors="colors" :darkmode="darkmode" />
-  <TypographySection :colors="colors" :darkmode="darkmode" />
-  <ShareSection :colors="colors" />
+  <TextOverlaySection :colors="colors" :direction="direction" />
+  <BackgroundImageSection :colors="colors" :direction="direction" />
+  <IconsSection :colors="colors" :darkmode="darkmode" :direction="direction" />
+  <TypographySection
+    :colors="colors"
+    :darkmode="darkmode"
+    :direction="direction"
+  />
+  <ShareSection :colors="colors" :direction="direction" />
   <!-- <IconsSection :darkmode="darkmode" :colors="colors" />  -->
   <Search
     @update-colors="changeGradient"
@@ -82,7 +87,12 @@ import TypographySection from '../components/TypographySection.vue';
 export default {
   name: 'editor',
   props: ['gradientColors', 'colorName', 'darkmode', 'gradients'],
-  emits: ['dark-mode-switch', 'color1Updated', 'directionChange', 'open-search'],
+  emits: [
+    'dark-mode-switch',
+    'color1Updated',
+    'directionChange',
+    'open-search',
+  ],
   components: {
     EditorSettings,
     InfoSection,
@@ -121,8 +131,6 @@ export default {
     },
     changeDirection(direction) {
       this.direction = direction;
-      this.gradientName = 'Custom';
-      this.$emit('directionChange', direction);
     },
     getRandomGradient() {
       const randomElement =

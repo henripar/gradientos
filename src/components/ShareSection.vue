@@ -33,12 +33,12 @@
 <script>
 export default {
   name: 'ShareSection',
-  props: ['colors'],
+  props: ['colors', 'direction'],
   methods: {
     generateGradient() {
       return {
         background: `linear-gradient(
-    90deg,
+    ${this.direction}deg,
     ${this.colors[0]},
     ${this.colors[1]}
   )`,

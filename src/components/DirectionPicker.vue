@@ -2,6 +2,7 @@
   <div class="picker">
     <svg
       v-for="angle in directions"
+      v-bind:key="angle"
       @click="changeDirection(angle)"
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -12,7 +13,7 @@
       stroke-width="1"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class="button"
+      :class="['button', direction == angle ? 'activeButton' : null]"
     >
       <g :transform="`rotate(${angle - 90}, 0, 0)`" transform-origin="center">
         <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -25,11 +26,11 @@
 
 <script>
 export default {
-  props: ['darkmode'],
+  props: ['darkmode', 'direction'],
   emits: ['directionChange'],
   data() {
     return {
-      directions: [-45, 0, 45, -90, 90, -135, 180, 135],
+      directions: [315, 0, 45, 270, 90, 225, 180, 135],
     };
   },
   methods: {
@@ -45,6 +46,16 @@ export default {
   cursor: pointer;
   padding: 0.35rem;
   border-radius: 7px;
+}
+
+.dark .activeButton {
+  background: #ececec16;
+  cursor: pointer;
+}
+
+.light .activeButton {
+  background: rgba(227, 227, 227, 0.425);
+  cursor: pointer;
 }
 
 .dark .button:hover {

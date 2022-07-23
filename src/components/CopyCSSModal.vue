@@ -9,9 +9,7 @@
       <p>CSS for Background</p>
       <div class="codeContainer">
         <code :class="['cssValue', darkmode ? 'darkBox' : 'lightBox']">{{
-          isCSSBackgroundCopied
-            ? 'Copied!'
-            : gradientCodeLine
+          isCSSBackgroundCopied ? 'Copied!' : gradientCodeLine
         }}</code>
 
         <button
@@ -43,7 +41,6 @@
         <code :class="['cssValue', darkmode ? 'darkBox' : 'lightBox']"
           >{{ isCSSTextCopied ? `Copied!
 
-          
           ` :
 `${gradientCodeLine}
 -webkit-background-clip: text;
@@ -113,9 +110,9 @@ export default {
   },
   computed: {
     gradientCodeLine() {
-      return `background: linear-gradient(${this.direction}deg, ${this.colors[0]}, ${this.colors[1]});`
-    }
-  }
+      return `background: linear-gradient(${this.direction}deg, ${this.colors[0]}, ${this.colors[1]});`;
+    },
+  },
 };
 </script>
 

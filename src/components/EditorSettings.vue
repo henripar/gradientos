@@ -51,7 +51,7 @@
         darkmode ? 'dark' : 'light',
         isDirectionPickerOpen ? 'activeButton' : null,
       ]"
-      >
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -62,9 +62,14 @@
         stroke-width="1"
         stroke-linecap="round"
         stroke-linejoin="round"
+      >
+        <g
+          :transform="`rotate(${direction - 90}, 0, 0)`"
+          transform-origin="center"
         >
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-        <polyline points="12 5 19 12 12 19"></polyline>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
       </svg>
     </button>
     <DirectionPicker
@@ -72,8 +77,9 @@
       :class="[
         'directionPickerContainer',
         darkmode ? 'darkContainer' : 'lightContainer',
-        darkmode ? 'dark' : 'light'
+        darkmode ? 'dark' : 'light',
       ]"
+      :direction="direction"
       @direction-change="changeDirection"
     />
     <span
@@ -211,6 +217,7 @@ export default {
       this.isCopyCSSModalOpen = false;
       this.isColor1PickerOpen = false;
       this.isColor2PickerOpen = false;
+      this.isDirectionPickerOpen = false;
     },
     openCSSCopyModal() {
       this.isCopyCSSModalOpen = !this.isCopyCSSModalOpen;
@@ -410,6 +417,7 @@ button {
 .directionPickerContainer {
   position: absolute;
   top: 80px;
+  left: 0;
 }
 
 @media screen and (max-width: 680px) {
