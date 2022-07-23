@@ -11,11 +11,7 @@
         <code :class="['cssValue', darkmode ? 'darkBox' : 'lightBox']">{{
           isCSSBackgroundCopied
             ? 'Copied!'
-            : 'background: linear-gradient(to right, ' +
-              colors[0] +
-              ', ' +
-              colors[1] +
-              ');'
+            : gradientCodeLine
         }}</code>
 
         <button
@@ -49,8 +45,7 @@
 
           
           ` :
-`background: linear-gradient(to right, ${colors[0]}, 
-${colors[1]});
+`${gradientCodeLine}
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;`
 }}
@@ -86,7 +81,7 @@ ${colors[1]});
 <script>
 export default {
   name: 'CopyCSSModal',
-  props: ['colors', 'darkmode'],
+  props: ['colors', 'darkmode', 'direction'],
   data() {
     return {
       isCSSBackgroundCopied: false,
@@ -96,12 +91,7 @@ export default {
   methods: {
     copyCSSCode(type) {
       if (type === 'background') {
-        let code =
-          'background: linear-gradient(to right, ' +
-          this.colors[0] +
-          ', ' +
-          this.colors[1] +
-          ');';
+        let code = this.gradientCodeLine;
         navigator.clipboard.writeText(code);
         this.isCSSBackgroundCopied = true;
         setTimeout(() => {
@@ -109,7 +99,7 @@ export default {
         }, 1000);
       } else if (type === 'text') {
         let code = `
-        background: linear-gradient(to right, ${this.colors[0]}, ${this.colors[1]});
+        ${this.gradientCodeLine}
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;`;
 
@@ -121,6 +111,11 @@ export default {
       }
     },
   },
+  computed: {
+    gradientCodeLine() {
+      return `background: linear-gradient(${this.direction}deg, ${this.colors[0]}, ${this.colors[1]});`
+    }
+  }
 };
 </script>
 
