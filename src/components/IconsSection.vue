@@ -54,9 +54,14 @@
             class="svgGradient"
           >
             <defs>
-              <linearGradient id="currentGradient">
-                <stop offset="5%" :stop-color="colors[0]" />
-                <stop offset="95%" :stop-color="colors[1]" />
+              <linearGradient
+                id="currentGradient"
+                gradientUnits="userSpaceOnUse"
+                :gradientTransform="`rotate(${direction - 90}, 12, 12)`"
+              >
+                >
+                <stop offset="1%" :stop-color="colors[0]" />
+                <stop offset="99%" :stop-color="colors[1]" />
               </linearGradient>
             </defs>
             <circle cx="12" cy="12" r="2" class="svgGradient"></circle>
@@ -90,9 +95,14 @@
             stroke-linejoin="round"
           >
             <defs>
-              <linearGradient id="currentGradient">
-                <stop offset="5%" :stop-color="colors[0]" />
-                <stop offset="95%" :stop-color="colors[1]" />
+              <linearGradient
+                id="currentGradient"
+                gradientUnits="userSpaceOnUse"
+                :gradientTransform="`rotate(${direction - 90}, 12, 12)`"
+              >
+                >
+                <stop offset="1%" :stop-color="colors[0]" />
+                <stop offset="99%" :stop-color="colors[1]" />
               </linearGradient>
             </defs>
             <path
@@ -111,12 +121,16 @@
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="svgicon"
           >
             <defs>
-              <linearGradient id="currentGradient">
-                <stop offset="5%" :stop-color="colors[0]" />
-                <stop offset="95%" :stop-color="colors[1]" />
+              <linearGradient
+                id="currentGradient"
+                gradientUnits="userSpaceOnUse"
+                :gradientTransform="`rotate(${direction - 90}, 12, 12)`"
+              >
+                >
+                <stop offset="1%" :stop-color="colors[0]" />
+                <stop offset="99%" :stop-color="colors[1]" />
               </linearGradient>
             </defs>
             <path
@@ -138,6 +152,17 @@
             stroke-linecap="round"
             stroke-linejoin="round"
           >
+            <defs>
+              <linearGradient
+                id="currentGradient"
+                gradientUnits="userSpaceOnUse"
+                :gradientTransform="`rotate(${direction - 90}, 12, 12)`"
+              >
+                >
+                <stop offset="1%" :stop-color="colors[0]" />
+                <stop offset="99%" :stop-color="colors[1]" />
+              </linearGradient>
+            </defs>
             <path d="m7 7 10 10-5 5V2l5 5L7 17" class="svgGradient"></path>
           </svg>
           <svg
@@ -151,6 +176,17 @@
             stroke-linecap="round"
             stroke-linejoin="round"
           >
+            <defs>
+              <linearGradient
+                id="currentGradient"
+                gradientUnits="userSpaceOnUse"
+                :gradientTransform="`rotate(${direction - 90}, 12, 12)`"
+              >
+                >
+                <stop offset="1%" :stop-color="colors[0]" />
+                <stop offset="99%" :stop-color="colors[1]" />
+              </linearGradient>
+            </defs>
             <path
               d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"
               class="svgGradient"
@@ -166,12 +202,16 @@
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="svgicon"
           >
             <defs>
-              <linearGradient id="currentGradient">
-                <stop offset="5%" :stop-color="colors[0]" />
-                <stop offset="95%" :stop-color="colors[1]" />
+              <linearGradient
+                id="currentGradient"
+                gradientUnits="userSpaceOnUse"
+                :gradientTransform="`rotate(${direction - 90}, 12, 12)`"
+              >
+                >
+                <stop offset="1%" :stop-color="colors[0]" />
+                <stop offset="99%" :stop-color="colors[1]" />
               </linearGradient>
             </defs>
             <path
@@ -191,6 +231,17 @@
             stroke-linecap="round"
             stroke-linejoin="round"
           >
+            <defs>
+              <linearGradient
+                id="currentGradient"
+                gradientUnits="userSpaceOnUse"
+                :gradientTransform="`rotate(${direction - 90}, 12, 12)`"
+              >
+                >
+                <stop offset="1%" :stop-color="colors[0]" />
+                <stop offset="99%" :stop-color="colors[1]" />
+              </linearGradient>
+            </defs>
             <polygon
               points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
               class="svgGradient"
