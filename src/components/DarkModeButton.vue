@@ -10,7 +10,6 @@
       stroke-width="1.5"
       stroke-linecap="round"
       stroke-linejoin="round"
-      @click="changeDarkMode"
       v-if="darkmode"
     >
       <circle cx="12" cy="12" r="4"></circle>
@@ -33,7 +32,6 @@
       stroke-width="1.5"
       stroke-linecap="round"
       stroke-linejoin="round"
-      @click="changeDarkMode"
       v-if="!darkmode"
     >
       <path d="M12 3a6.364 6.364 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
