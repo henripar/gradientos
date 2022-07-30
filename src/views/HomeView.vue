@@ -20,7 +20,11 @@
           <path d="M9 18c-4.51 2-5-2-7-2"></path>
         </svg>
       </a>
-      <DarkModeButton :darkmode="darkmode" @dark-mode-switch="changeDarkMode" />
+      <DarkModeButton
+        :darkmode="darkmode"
+        @dark-mode-switch="changeDarkMode"
+        :isClickable="true"
+      />
     </div>
     <Header
       :darkmode="darkmode"

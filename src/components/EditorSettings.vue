@@ -1,81 +1,187 @@
 <template>
   <div :class="['container', darkmode ? 'darkContainer' : 'lightContainer']">
-    <router-link :style="{
+    <router-link
+      :style="{
         display: 'flex',
         'align-items': 'center',
         'justify-content': 'center',
         'text-decoration': 'none',
         color: darkmode ? '#fff' : '#000',
-      }" to="/" aria-label="To home">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      }"
+      to="/"
+      aria-label="To home"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
         <polyline points="9 22 9 12 15 12 15 22"></polyline>
       </svg>
     </router-link>
-    <span @click="openColorPicker(1)" :style="{ background: colors[0] }" class="colorBox">
+    <span
+      @click="openColorPicker(1)"
+      :style="{ background: colors[0] }"
+      class="colorBox"
+    >
     </span>
-    <ColorPicker @color1Updated="updateColor" v-if="isColor1PickerOpen" :position="0" :color="colors[0]" />
-    <span @click="copyToClipboard(colors[0], 0)" :class="['colorText', darkmode ? 'dark' : 'light']">
+    <ColorPicker
+      @color1Updated="updateColor"
+      v-if="isColor1PickerOpen"
+      :position="0"
+      :color="colors[0]"
+    />
+    <span
+      @click="copyToClipboard(colors[0], 0)"
+      :class="['colorText', darkmode ? 'dark' : 'light']"
+    >
       {{ isColor1Copied ? 'Copied!' : colors[0] }}
     </span>
-    <button @click="openDirectionPicker" :class="[
+    <button
+      @click="openDirectionPicker"
+      :class="[
         'settingButton',
         darkmode ? 'dark' : 'light',
         isDirectionPickerOpen ? 'activeButton' : null,
-      ]">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-        <g :transform="`rotate(${direction - 90}, 0, 0)`" transform-origin="center">
+      ]"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <g
+          :transform="`rotate(${direction - 90}, 0, 0)`"
+          transform-origin="center"
+        >
           <line x1="5" y1="12" x2="19" y2="12"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
         </g>
       </svg>
     </button>
-    <DirectionPicker v-if="isDirectionPickerOpen" :class="[
+    <DirectionPicker
+      v-if="isDirectionPickerOpen"
+      :class="[
         'directionPickerContainer',
         darkmode ? 'darkContainer' : 'lightContainer',
         darkmode ? 'dark' : 'light',
-      ]" :direction="direction" @direction-change="changeDirection" />
-    <span :style="{ background: colors[1] }" class="colorBox" @click="openColorPicker(2)">
+      ]"
+      :direction="direction"
+      @direction-change="changeDirection"
+    />
+    <span
+      :style="{ background: colors[1] }"
+      class="colorBox"
+      @click="openColorPicker(2)"
+    >
     </span>
-    <ColorPicker @color-1-updated="updateColor" v-if="isColor2PickerOpen" :position="1" :color="colors[1]" />
-    <span @click="copyToClipboard(colors[1], 1)" :class="['colorText', darkmode ? 'dark' : 'light']">
+    <ColorPicker
+      @color-1-updated="updateColor"
+      v-if="isColor2PickerOpen"
+      :position="1"
+      :color="colors[1]"
+    />
+    <span
+      @click="copyToClipboard(colors[1], 1)"
+      :class="['colorText', darkmode ? 'dark' : 'light']"
+    >
       {{ isColor2Copied ? 'Copied!' : colors[1] }}
     </span>
-    <span @click.prevent="openSearch" :class="['gradientName', darkmode ? 'dark' : 'light']">
+    <span
+      @click.prevent="openSearch"
+      :class="['gradientName', darkmode ? 'dark' : 'light']"
+    >
       <span class="gradientNameText">{{ gradientName }} </span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg></span>
-    <button @click="openCSSCopyModal()" :class="[
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg
+    ></span>
+    <button
+      @click="openCSSCopyModal()"
+      :class="[
         'settingButton',
         darkmode ? 'dark' : 'light',
         isCopyCSSModalOpen ? 'activeButton' : null,
-      ]" aria-label="Copy gradient CSS">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      ]"
+      aria-label="Copy gradient CSS"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <polyline points="16 18 22 12 16 6"></polyline>
         <polyline points="8 6 2 12 8 18"></polyline>
       </svg>
     </button>
-    <button :class="['settingButton', darkmode ? 'dark' : 'light']" @click="downloadGradient()"
-      aria-label="Download Gradient as image">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <button
+      :class="['settingButton', darkmode ? 'dark' : 'light']"
+      @click="downloadGradient()"
+      aria-label="Download Gradient as image"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
         <polyline points="7 10 12 15 17 10"></polyline>
         <line x1="12" y1="15" x2="12" y2="3"></line>
       </svg>
     </button>
-    <button :class="['settingButton', darkmode ? 'dark' : 'light']" aria-label="Switch dark mode"
-      @click="changeDarkMode()">
-      <DarkModeButton :style="{ position: 'relative' }" @dark-mode-switch="changeDarkMode" :darkmode="darkmode" />
+    <button
+      :class="['settingButton', darkmode ? 'dark' : 'light']"
+      aria-label="Switch dark mode"
+      @click="changeDarkMode()"
+    >
+      <DarkModeButton
+        :style="{ position: 'relative' }"
+        :isClickable="false"
+        :darkmode="darkmode"
+      />
     </button>
   </div>
-  <CopyCSSModal :darkmode="darkmode" :colors="colors" :direction="direction" v-if="isCopyCSSModalOpen" />
+  <CopyCSSModal
+    :darkmode="darkmode"
+    :colors="colors"
+    :direction="direction"
+    v-if="isCopyCSSModalOpen"
+  />
 </template>
 
 <script>
@@ -87,7 +193,13 @@ import DirectionPicker from './DirectionPicker.vue';
 export default {
   name: 'EditorSettings',
   props: ['colors', 'darkmode', 'gradientName', 'direction', 'isSearchOpen'],
-  emits: ['color1Updated', 'darkModeSwitch', 'directionChange', 'open-search'],
+  emits: [
+    'color1Updated',
+    'darkModeSwitch',
+    'dark-mode-switch',
+    'directionChange',
+    'open-search',
+  ],
   components: { DarkModeButton, ColorPicker, CopyCSSModal, DirectionPicker },
   data() {
     return {
