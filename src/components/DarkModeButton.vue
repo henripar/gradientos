@@ -11,6 +11,7 @@
       stroke-linecap="round"
       stroke-linejoin="round"
       v-if="darkmode"
+      @click="isClickable ? changeDarkMode() : null"
     >
       <circle cx="12" cy="12" r="4"></circle>
       <path d="M12 2v2"></path>
@@ -33,6 +34,7 @@
       stroke-linecap="round"
       stroke-linejoin="round"
       v-if="!darkmode"
+      @click="isClickable ? changeDarkMode() : null"
     >
       <path d="M12 3a6.364 6.364 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
     </svg>
@@ -41,8 +43,8 @@
 
 <script>
 export default {
-  name: 'Header',
-  props: ['darkmode'],
+  name: 'DarkmodeButton',
+  props: ['darkmode', 'isClickable'],
   data() {
     return {};
   },
